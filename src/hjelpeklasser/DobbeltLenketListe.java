@@ -79,9 +79,13 @@ public class DobbeltLenketListe<T> implements Liste<T>
     public DobbeltLenketListe(T[] a)
     {
         Objects.requireNonNull(a, "Tabellen a er tom!");
+
+
+        /*
         if (a.length == 0){
             throw new IndexOutOfBoundsException("Ikke lov med tabeller uten verdier");
         }
+        */
 
 
         Node nyNode = new Node(null);
@@ -94,17 +98,12 @@ public class DobbeltLenketListe<T> implements Liste<T>
                     nyNode = hode = new Node(a[i]);
                     antall++;
                     endringer++;
-                    System.out.println("La til 1. verdi!" + a[i]);
                 } else {
                     nyNode.neste = new Node(a[i], nyNode, null);
                     nyNode = nyNode.neste;
                     antall++;
                     endringer++;
-                    System.out.println("Har lagt inn a[" + i + "] med verdi '" + a[i] + "'"); // TODO Dette er en else-statement for testing. Fjern før innlevering!
                 }
-            } else
-            {
-                System.out.println("Hoppet over a[" + i + "] for den er tom!");           // TODO Dette er en else-statement for testing. Fjern før innlevering!
             }
         }
         hale = nyNode;
@@ -202,7 +201,19 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public String toString()
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        Node anchorNode = hode;
+        for(int i = 0; i < antall; i++){
+            sb.append(anchorNode.verdi);
+            anchorNode = anchorNode.neste;
+            if(i != antall-1){
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+
+        return sb.toString();
     }
 
     public String omvendtString()
