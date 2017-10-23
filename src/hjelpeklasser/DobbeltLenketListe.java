@@ -78,39 +78,36 @@ public class DobbeltLenketListe<T> implements Liste<T>
     // konstruktør
     public DobbeltLenketListe(T[] a)
     {
-    /*
-    if (Objects.requireNonNull(a))
-    {
-      throw new NullPointerException();
-    } else
-    */
+        Objects.requireNonNull(a, "Tabellen a er tom!");
         if (a.length == 0){
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Ikke lov med tabeller uten verdier");
         }
-        {
-            System.out.println("Starter konstruktøren");
-            Node nyNode = hode = hale = new Node(a[0]); //Her er forrige = neste = null
-            System.out.println("Har lagt inn a[" + 0 + "] med verdi '" + a[0] + "'");   // TODO Dette er en else-statement for testing. Fjern før innlevering!
-            antall++;
-            endringer++;
 
-            for (int i = 1; i < a.length; i++)
+
+        Node nyNode = new Node(null);
+
+        for (int i = 0; i < a.length; i++)
+        {
+            if(a[i]!=null)
             {
-                if(a[i]!=null)
-                {
-                    nyNode.setNeste(new Node(a[i], nyNode, null));
-                    nyNode = nyNode.getNeste();
-                    hale = nyNode;
+                if(antall==0){
+                    nyNode = hode = new Node(a[i]);
+                    antall++;
+                    endringer++;
+                    System.out.println("La til 1. verdi!" + a[i]);
+                } else {
+                    nyNode.neste = new Node(a[i], nyNode, null);
+                    nyNode = nyNode.neste;
                     antall++;
                     endringer++;
                     System.out.println("Har lagt inn a[" + i + "] med verdi '" + a[i] + "'"); // TODO Dette er en else-statement for testing. Fjern før innlevering!
-                } else
-                {
-                    System.out.println("Hoppet over a[" + i + "] for den er tom!");           // TODO Dette er en else-statement for testing. Fjern før innlevering!
                 }
+            } else
+            {
+                System.out.println("Hoppet over a[" + i + "] for den er tom!");           // TODO Dette er en else-statement for testing. Fjern før innlevering!
             }
-            hale = nyNode;
         }
+        hale = nyNode;
     }
 
     /** Sjekkeliste for konstruktøren

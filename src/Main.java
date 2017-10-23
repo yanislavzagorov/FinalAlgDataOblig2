@@ -10,10 +10,6 @@ public class Main {
         Liste<String> liste = new DobbeltLenketListe<>(s);
         System.out.println(liste.antall() + " " + liste.tom());
 
-        String[] a = {"Piotyr"};
-        Liste<String> liste2 = new DobbeltLenketListe<>(a);
-        System.out.println(liste2.antall() + " " + liste2.tom());
-
 
 
 
