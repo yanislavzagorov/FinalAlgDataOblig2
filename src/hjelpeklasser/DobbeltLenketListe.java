@@ -145,7 +145,7 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public boolean tom()
     {
-        return hode==hale;
+        return (antall==0);
     }
 
     @Override
