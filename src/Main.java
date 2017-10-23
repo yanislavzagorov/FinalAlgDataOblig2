@@ -15,7 +15,7 @@ public class Main {
             liste.leggInn(i);
             System.out.println(liste.toString() + " " + liste.omvendtString());
         }
-        
+
 
         System.out.println("-+-+-+-+-+-Program slutt-+-+-+-+-+-");
     }
