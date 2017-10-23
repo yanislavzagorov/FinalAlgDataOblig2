@@ -218,7 +218,19 @@ public class DobbeltLenketListe<T> implements Liste<T>
 
     public String omvendtString()
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        Node anchorNode = hale;
+        for(int i = 0; i < antall; i++){
+            sb.append(anchorNode.verdi);
+            anchorNode = anchorNode.forrige;
+            if(i != antall-1){
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+
+        return sb.toString();
     }
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c)
