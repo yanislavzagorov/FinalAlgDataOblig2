@@ -150,7 +150,10 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public boolean inneholder(T verdi)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        if(indeksTil(verdi)==-1)
+        {
+            return false;
+        }return true;
     }
 
     @Override

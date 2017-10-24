@@ -9,6 +9,7 @@ public class Main {
         String[] s = {"Ola", "Petter", null, null, "Per", "Fugg", null};
         Liste<String> liste = new DobbeltLenketListe<>(s);
         System.out.println(liste.indeksTil(null));
+        System.out.println(liste.inneholder("Pette"));
 
         System.out.println("-+-+-+-+-+-Program slutt-+-+-+-+-+-");
     }
