@@ -64,7 +64,27 @@ public class DobbeltLenketListe<T> implements Liste<T>
     // hjelpemetode
     private Node<T> finnNode(int indeks)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        indeksKontroll(indeks, false);
+        Node<T> anchorNode;
+        int scope = antall/2;
+
+        if(indeks < scope)
+        {
+            anchorNode = hode;
+            for(int i = 0; i < indeks; i++)
+            {
+                anchorNode = anchorNode.neste;
+            }
+            return anchorNode;
+        } else
+        {
+            anchorNode = hale;
+            for (int i = 0; i < (antall-indeks); i++)
+            {
+                anchorNode = anchorNode.forrige;
+            }
+            return anchorNode;
+        }
     }
 
     // konstruktør
@@ -101,10 +121,36 @@ public class DobbeltLenketListe<T> implements Liste<T>
         hale = nyNode;
     }
 
+    private void fratilKontroll(int antall, int fra, int til)
+    {
+        if (fra < 0)                                  // fra er negativ
+            throw new IndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+
+        if (til > antall)                          // til er utenfor tabellen
+            throw new IndexOutOfBoundsException
+                    ("til(" + til + ") > tablengde(" + antall + ")");
+
+        if (fra > til)                                // fra er større enn til
+            throw new IndexOutOfBoundsException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+    }
+
+
     // subliste
     public Liste<T> subliste(int fra, int til)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        Liste<T> subliste = new DobbeltLenketListe<>();
+        Node<T> anchorNode = finnNode(fra);
+        for(int i = fra; i < til; i++)
+        {
+            subliste.leggInn(anchorNode.verdi);
+            if (anchorNode != this.hale)
+            {
+                anchorNode = anchorNode.neste;
+            }
+        }
+        return subliste;
     }
 
     @Override
@@ -132,7 +178,7 @@ public class DobbeltLenketListe<T> implements Liste<T>
             return true;
         } else
         {
-            Node anchorNode = new Node(verdi, hale, null);
+            Node<T> anchorNode = new Node(verdi, hale, null);
             hale.neste = anchorNode;
             hale = anchorNode;
             antall++;
@@ -159,13 +205,14 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public T hent(int indeks)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        Node<T> anchorNode = finnNode(indeks);
+        return anchorNode.verdi;
     }
 
     @Override
     public int indeksTil(T verdi)
     {
-        Node anchorNode = hode;
+        Node<T> anchorNode = hode;
 
         if(verdi==null){
             return -1;
@@ -184,7 +231,18 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public T oppdater(int indeks, T nyverdi)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        Objects.requireNonNull(nyverdi, "Null verdier aksepteres ikke!");
+        Node<T> anchorNode = finnNode(indeks);     //Kjører indeksKontroll() inni seg :)
+        T returVerdi = anchorNode.verdi;
+        anchorNode.verdi = nyverdi;
+        return returVerdi;
+
+        /**
+         * Den skal erstatte verdien på plass indeks med nyverdi
+         * og returnere det som lå der fra før. Husk at indeks må
+         * sjekkes, at null-verdier ikke skal kunne legges inn og
+         * at variabelen endringer skal økes.
+         */
     }
 
     @Override
@@ -210,7 +268,7 @@ public class DobbeltLenketListe<T> implements Liste<T>
     {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        Node anchorNode = hode;
+        Node<T> anchorNode = hode;
         for(int i = 0; i < antall; i++){
             sb.append(anchorNode.verdi);
             anchorNode = anchorNode.neste;
@@ -227,7 +285,7 @@ public class DobbeltLenketListe<T> implements Liste<T>
     {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        Node anchorNode = hale;
+        Node<T> anchorNode = hale;
         for(int i = 0; i < antall; i++){
             sb.append(anchorNode.verdi);
             anchorNode = anchorNode.forrige;
