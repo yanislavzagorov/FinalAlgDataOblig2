@@ -6,9 +6,9 @@ public class Main {
         System.out.println("\n-+-+-+-+-+-Program start-+-+-+-+-+-");
 
 
-        String[] s = {null};
+        String[] s = {"Ola", "Petter", null, null, "Per", "Fugg", null};
         Liste<String> liste = new DobbeltLenketListe<>(s);
-        System.out.println(liste.antall() + " " + liste.tom());
+        System.out.println(liste.indeksTil(null));
 
         System.out.println("-+-+-+-+-+-Program slutt-+-+-+-+-+-");
     }
