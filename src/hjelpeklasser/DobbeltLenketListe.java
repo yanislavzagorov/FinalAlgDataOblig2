@@ -64,7 +64,6 @@ public class DobbeltLenketListe<T> implements Liste<T>
     // hjelpemetode
     private Node<T> finnNode(int indeks)
     {
-        System.out.println("(!) Start av finnNode(" + indeks + ").");
         Node<T> anchorNode;
         int scope = antall/2;
 
@@ -75,7 +74,6 @@ public class DobbeltLenketListe<T> implements Liste<T>
             {
                 anchorNode = anchorNode.neste;
             }
-            System.out.println("returnerer " + anchorNode.verdi);
             return anchorNode;
         } else
         {
@@ -84,7 +82,6 @@ public class DobbeltLenketListe<T> implements Liste<T>
             {
                 anchorNode = anchorNode.forrige;
             }
-            System.out.println("returnerer " + anchorNode.verdi);
             return anchorNode;
         }
     }
