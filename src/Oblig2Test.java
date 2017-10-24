@@ -24,7 +24,7 @@ public class Oblig2Test
 
         antallFeil += oppgave1();
         antallFeil += oppgave2();
-        //antallFeil += oppgave3();
+        antallFeil += oppgave3();
         antallFeil += oppgave4();
         //antallFeil += oppgave5();
         //antallFeil += oppgave6();
@@ -519,8 +519,7 @@ public class Oblig2Test
         Integer[] i = {};
         DobbeltLenketListe<Integer> iliste = new DobbeltLenketListe<>(i);
 
-        if (!iliste.subliste(0,0).toString().equals("[]"))
-        {
+        if (!iliste.subliste(0, 0).toString().equals("[]")) {
             antallFeil++;
             System.out.println
                     ("Oppgave 3u: Sublisten til en tom liste skal være tom!");
