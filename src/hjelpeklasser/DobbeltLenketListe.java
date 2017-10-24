@@ -29,29 +29,12 @@ public class DobbeltLenketListe<T> implements Liste<T>
             this(verdi, null, null);
         }
 
-        public T getVerdi()
-        {
-            return verdi;
+        public void setNeste(Node<T> nyNeste){
+            this.neste = nyNeste;
         }
 
-        public void setForrige(Node<T> node)
-        {
-            this.forrige = node;
-        }
-
-        public Node<T> getForrige()
-        {
-            return forrige;
-        }
-
-        public void setNeste(Node<T> node)
-        {
-            this.neste = node;
-        }
-
-        public Node<T> getNeste()
-        {
-            return neste;
+        public void setForrige(Node<T> nyForrige){
+            this.forrige = nyForrige;
         }
     } // Node
 
@@ -196,7 +179,16 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public T fjern(int indeks)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        indeksKontroll(indeks, false);
+
+        Node anchorNode = hode;
+        for(int i = 0; i < indeks; i++)
+        {
+            anchorNode = anchorNode.neste;
+        }
+        anchorNode.forrige.setNeste(anchorNode.neste);
+        anchorNode.neste.setForrige(anchorNode.forrige);
+        return (T) anchorNode.verdi;
     }
 
     @Override
@@ -211,10 +203,12 @@ public class DobbeltLenketListe<T> implements Liste<T>
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         Node anchorNode = hode;
-        for(int i = 0; i < antall; i++){
+        for(int i = 0; i < antall; i++)
+        {
             sb.append(anchorNode.verdi);
             anchorNode = anchorNode.neste;
-            if(i != antall-1){
+            if(i != antall-1)
+            {
                 sb.append(", ");
             }
         }
@@ -228,10 +222,12 @@ public class DobbeltLenketListe<T> implements Liste<T>
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         Node anchorNode = hale;
-        for(int i = 0; i < antall; i++){
+        for(int i = 0; i < antall; i++)
+        {
             sb.append(anchorNode.verdi);
             anchorNode = anchorNode.forrige;
-            if(i != antall-1){
+            if(i != antall-1)
+            {
                 sb.append(", ");
             }
         }
