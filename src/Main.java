@@ -6,16 +6,9 @@ public class Main {
         System.out.println("\n-+-+-+-+-+-Program start-+-+-+-+-+-");
 
 
-        DobbeltLenketListe<Integer> liste = new DobbeltLenketListe<>();
-
-        System.out.println(liste.toString() + " " + liste.omvendtString());
-
-        for (int i = 1; i <= 3; i++)
-        {
-            liste.leggInn(i);
-            System.out.println(liste.toString() + " " + liste.omvendtString());
-        }
-
+        String[] s = {null};
+        Liste<String> liste = new DobbeltLenketListe<>(s);
+        System.out.println(liste.antall() + " " + liste.tom());
 
         System.out.println("-+-+-+-+-+-Program slutt-+-+-+-+-+-");
     }

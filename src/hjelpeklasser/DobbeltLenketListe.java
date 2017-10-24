@@ -78,15 +78,7 @@ public class DobbeltLenketListe<T> implements Liste<T>
     // konstruktør
     public DobbeltLenketListe(T[] a)
     {
-        Objects.requireNonNull(a, "Tabellen a er tom!");
-
-
-        /*
-        if (a.length == 0){
-            throw new IndexOutOfBoundsException("Ikke lov med tabeller uten verdier");
-        }
-        */
-
+        Objects.requireNonNull(a, "Null verdier aksepteres ikke!");
 
         Node nyNode = new Node(null);
 
@@ -109,23 +101,6 @@ public class DobbeltLenketListe<T> implements Liste<T>
         hale = nyNode;
     }
 
-    /** Sjekkeliste for konstruktøren
-     *
-     * Stoppes en null-tabell? Kastes i så fall en NullPointerException?
-     * Blir det korrekt hvis parametertabellen inneholder en eller flere null-verdier?
-     * Blir det korrekt hvis parametertabellen er tom (har lengde 0)?
-     * Blir det korrekt hvis parametertabellen kun har null-verdier?
-     * Blir det korrekt hvis parametertabellen har kun én verdi som ikke er null?
-     * Blir antallet satt korrekt?
-     * Får verdiene i listen samme rekkefølge som i tabellen?
-     */
-
-
-
-
-
-
-
     // subliste
     public Liste<T> subliste(int fra, int til)
     {
@@ -147,7 +122,7 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public boolean leggInn(T verdi)
     {
-        Objects.requireNonNull(verdi, "Tabellen a er tom!");
+        Objects.requireNonNull(verdi, "Null verdier aksepteres ikke!");
 
         if(antall==0)
         {
