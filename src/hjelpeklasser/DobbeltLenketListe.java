@@ -162,17 +162,13 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public int indeksTil(T verdi)
     {
-        System.out.println("Starter indeksTil("+verdi+").");
         Node anchorNode = hode;
 
         if(verdi==null){
-            System.out.println("Verdien ble == null");
             return -1;
         }
 
         for(int i = 0; i < antall; i++){
-            System.out.println("Inni for løkke! i=" + i);
-            System.out.println("    - verdi:" + anchorNode.verdi);
             if(anchorNode.verdi.equals(verdi))      //TODO (?) skal vi bruke .equals eller == her?
             {
                 return i;
