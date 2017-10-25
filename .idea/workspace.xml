@@ -39,8 +39,8 @@
       <file leaf-file-name="Oblig2Test.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Oblig2Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-403">
-              <caret line="733" column="13" lean-forward="true" selection-start-line="733" selection-start-column="13" selection-end-line="733" selection-end-column="13" />
+            <state relative-caret-position="227">
+              <caret line="784" column="9" lean-forward="true" selection-start-line="784" selection-start-column="9" selection-end-line="784" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -335,12 +335,12 @@
       <updated>1508756273346</updated>
       <workItem from="1508756276722" duration="11039000" />
       <workItem from="1508830727946" duration="3508000" />
-      <workItem from="1508957387826" duration="974000" />
+      <workItem from="1508957387826" duration="1775000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33283000" />
+    <option name="totallyTimeSpent" value="34084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -355,7 +355,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29947916" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29947916" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -804,8 +804,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Oblig2Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-403">
-          <caret line="733" column="13" lean-forward="true" selection-start-line="733" selection-start-column="13" selection-end-line="733" selection-end-column="13" />
+        <state relative-caret-position="227">
+          <caret line="784" column="9" lean-forward="true" selection-start-line="784" selection-start-column="9" selection-end-line="784" selection-end-column="9" />
           <folding />
         </state>
       </provider>
