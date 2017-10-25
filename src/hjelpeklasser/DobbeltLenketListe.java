@@ -236,19 +236,39 @@ public class DobbeltLenketListe<T> implements Liste<T>
         T returVerdi = anchorNode.verdi;
         anchorNode.verdi = nyverdi;
         return returVerdi;
-
-        /**
-         * Den skal erstatte verdien på plass indeks med nyverdi
-         * og returnere det som lå der fra før. Husk at indeks må
-         * sjekkes, at null-verdier ikke skal kunne legges inn og
-         * at variabelen endringer skal økes.
-         */
     }
 
     @Override
     public boolean fjern(T verdi)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        Node anchorNode = hode;
+
+        while (anchorNode != null) {
+            if(anchorNode.verdi.equals(verdi))
+            {
+                if (antall == 1)
+                {
+                    hode = hale = null;
+                } else if (anchorNode == hode)
+                {
+                    hode = hode.neste;
+                    hode.forrige = null;
+                } else if (anchorNode == hale)
+                {
+                    hale = hale.forrige;
+                    hale.neste = null;
+                } else
+                {
+                    anchorNode.neste.forrige = anchorNode.forrige;
+                    anchorNode.forrige.neste = anchorNode.neste;
+                }
+                antall--;
+                endringer++;
+                return true;
+            }
+            anchorNode = anchorNode.neste;
+        }
+        return false;
     }
 
     @Override
@@ -256,48 +276,33 @@ public class DobbeltLenketListe<T> implements Liste<T>
     {
         indeksKontroll(indeks, false);
 
-        if((indeks == 0) || (indeks == antall))
+        Node<T> node;
+        T anchorValue = hode.verdi;
+
+        if (antall == 1)
         {
-            if(antall==1)
-            {
-                T anchorVerdi = hode.verdi;
-                Node<T> anchorNode = hode;
-                anchorNode.forrige = null;
-                anchorNode.neste = null;
-                hode = hale = null;
-                antall--;
-                endringer++;
-                return anchorVerdi;
-            }
-            else if((indeks == 0))
-            {
-                T anchorVerdi = hode.verdi;
-                hode = hode.neste;
-                hode.forrige.setNeste(null);
-                hode.forrige = null;
-                antall--;
-                endringer++;
-                return anchorVerdi;
-            } else
-            {
-                T anchorVerdi = hale.verdi;
-                hale = hale.forrige;
-                hale.neste.setForrige(null);
-                hale.neste = null;
-                antall--;
-                endringer++;
-                return anchorVerdi;
-            }
+            hode = hale = null;
+        } else if (indeks == 0)
+        {
+            hode = hode.neste;
+            hode.forrige = null;
+        } else if (indeks == antall - 1)
+        {
+            anchorValue = hale.verdi;
+            hale = hale.forrige;
+            hale.neste = null;
+        } else
+        {
+            node = finnNode(indeks);
+            anchorValue = node.verdi;
+            node.forrige.neste = node.neste;
+            node.neste.forrige = node.forrige;
         }
 
-        Node<T> anchorNode = finnNode(indeks);
-        anchorNode.forrige.setNeste(anchorNode.neste);
-        anchorNode.neste.setForrige(anchorNode.forrige);
-        anchorNode.neste = anchorNode.forrige = null;
         antall--;
         endringer++;
 
-        return anchorNode.verdi;
+        return anchorValue;
     }
 
     @Override
