@@ -188,8 +188,11 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public void leggInn(int indeks, T verdi)
     {
-        if (indeks < 0 || indeks > antall){
-            throw new IllegalArgumentException("index " + indeks + " er negativ eller større enn antall: " + antall);
+        if (indeks < 0){
+            throw new IndexOutOfBoundsException("index " + indeks + " er negativ");
+        }
+        if (indeks > antall){
+            throw new IndexOutOfBoundsException("vbn");
         }
         if (antall == 0){
             hode = hale = new Node(verdi);
