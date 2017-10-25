@@ -254,7 +254,50 @@ public class DobbeltLenketListe<T> implements Liste<T>
     @Override
     public T fjern(int indeks)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        indeksKontroll(indeks, false);
+
+        if((indeks == 0) || (indeks == antall))
+        {
+            if(antall==1)
+            {
+                T anchorVerdi = hode.verdi;
+                Node<T> anchorNode = hode;
+                anchorNode.forrige = null;
+                anchorNode.neste = null;
+                hode = hale = null;
+                antall--;
+                endringer++;
+                return anchorVerdi;
+            }
+            else if((indeks == 0))
+            {
+                T anchorVerdi = hode.verdi;
+                hode = hode.neste;
+                hode.forrige.setNeste(null);
+                hode.forrige = null;
+                antall--;
+                endringer++;
+                return anchorVerdi;
+            } else
+            {
+                T anchorVerdi = hale.verdi;
+                hale = hale.forrige;
+                hale.neste.setForrige(null);
+                hale.neste = null;
+                antall--;
+                endringer++;
+                return anchorVerdi;
+            }
+        }
+
+        Node<T> anchorNode = finnNode(indeks);
+        anchorNode.forrige.setNeste(anchorNode.neste);
+        anchorNode.neste.setForrige(anchorNode.forrige);
+        anchorNode.neste = anchorNode.forrige = null;
+        antall--;
+        endringer++;
+
+        return anchorNode.verdi;
     }
 
     @Override
