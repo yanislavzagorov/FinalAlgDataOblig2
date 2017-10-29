@@ -1,6 +1,7 @@
 import hjelpeklasser.*;
 
 import javax.xml.soap.Node;
+import java.util.Comparator;
 
 public class Main {
 
@@ -8,11 +9,14 @@ public class Main {
         System.out.println("\n-+-+-+-+-+-Program start-+-+-+-+-+-");
 
 
-        Character[] c = {'A','B','C','D','E','F','G','H','I','J',};
-        DobbeltLenketListe<Character> liste = new DobbeltLenketListe<>(c);
-        System.out.println("liste er - - - - " + liste.toString());
+        String[] navn = {"Lars","Anders","Bodil","Kari","Per","Berit"};
 
-        liste.fjern('C');
+        Liste<String> liste1 = new DobbeltLenketListe<>(navn);
+
+        DobbeltLenketListe.sorter(liste1, Comparator.naturalOrder());
+        System.out.println(liste1);  // [Anders, Berit, Bodil, Kari, Lars, Per]   System.out.println(liste2);  // [Anders, Berit, Bodil, Kari, Lars, Per]   System.out.println(liste3);  // [Anders, Berit, Bodil, Kari, Lars, Per]
+
+        // Tabellen navn er upåvirket:   System.out.println(Arrays.toString(navn));   // [Lars, Anders, Bodil, Kari, Per, Berit]
 
 
         System.out.println("-+-+-+-+-+-Program slutt-+-+-+-+-+-");
